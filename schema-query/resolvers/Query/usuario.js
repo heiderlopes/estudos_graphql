@@ -1,4 +1,4 @@
-const {usuarios, perfis} = require('../data/db');
+const {usuarios, perfis} = require('../../data/db');
 
 function indiceUsuario (filtro) {
     if(!filtro) return -1;
@@ -13,12 +13,6 @@ function indiceUsuario (filtro) {
 };
 
 module.exports = {
-    ola() {
-        return 'Benvindo GraphQL';
-    },
-    horaCerta() {
-        return new Date();
-    },
     usuarioLogado() {
         return {
             id: 1,
@@ -29,20 +23,7 @@ module.exports = {
             vip: true
         }
     },
-    produtoEmDestaque() {
-        return {
-            nome: 'S10',
-            preco: 4000.00,
-            desconto: 0.15,
-        }
-    },
-    numerosMegaSena() {
-        const crescente = (a, b) => a - b;
 
-        return Array(6).fill(0)
-            .map(n => parseInt(Math.random() * 60))
-            .sort(crescente);
-    },
     usuarios() {
         return usuarios;
     },
@@ -56,14 +37,5 @@ module.exports = {
         const i = indiceUsuario(filtro);
         if(i < 0) return null
         return usuarios[i];
-    },
-
-    perfis() {
-        return perfis;
-    },
-
-    perfil(_, {id}) {
-        const perfisList = perfis.filter(p => p.id == id)
-        return perfisList ? perfisList[0] :  null
     }
 }
