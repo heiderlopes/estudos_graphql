@@ -6,7 +6,8 @@ type Query {
     produtoEmDestaque: Produto
     numerosMegaSena: [Int]!
     usuarios: [Usuario]
-    usuario(id: Int): Usuario
+    #usuario(id: Int): Usuario
+    usuario(filtro: UsuarioFiltro): Usuario
     perfis: [Perfil]
     perfil(id: Int): Perfil
 }
